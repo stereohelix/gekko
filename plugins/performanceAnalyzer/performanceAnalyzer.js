@@ -36,6 +36,8 @@ const PerformanceAnalyzer = function() {
 
   this.sharpe = 0;
 
+  this.exposure = 0;
+
   this.roundTrips = [];
   this.roundTrip = {
     id: 0,
@@ -136,6 +138,8 @@ PerformanceAnalyzer.prototype.handleRoundtrip = function() {
     this.roundTrips.map(r => r.profit),
     perfConfig.riskFreeReturn
   );
+  // update cached exposure
+  this.exposure = this.exposure + Date.parse(this.roundTrip.exit.date) - Date.parse(this.roundTrip.entry.date);
 }
 
 PerformanceAnalyzer.prototype.calculateReportStatistics = function() {
@@ -147,6 +151,7 @@ PerformanceAnalyzer.prototype.calculateReportStatistics = function() {
     this.dates.end.diff(this.dates.start)
   );
   let relativeProfit = balance / this.start.balance * 100 - 100
+  let percentExposure = this.exposure / (Date.parse(this.dates.end) - Date.parse(this.dates.start));
 
   let report = {
     currency: this.currency,
@@ -168,7 +173,8 @@ PerformanceAnalyzer.prototype.calculateReportStatistics = function() {
     endPrice: this.endPrice,
     trades: this.trades,
     startBalance: this.start.balance,
-    sharpe: this.sharpe
+    sharpe: this.sharpe,
+    exposure: percentExposure
   }
 
   report.alpha = report.profit - report.market;
