@@ -104,6 +104,7 @@ if(mode === 'backtest') {
     log.info(`(PROFIT REPORT) timespan:\t\t\t ${report.timespan}`);
     if(report.sharpe)
       log.info(`(PROFIT REPORT) sharpe ratio:\t\t\t ${report.sharpe}`);
+    log.info(`(PROFIT REPORT) exposure:\t\t\t ${report.exposure}`);
     log.info();
     log.info(`(PROFIT REPORT) start price:\t\t\t ${report.startPrice} ${this.currency}`);
     log.info(`(PROFIT REPORT) end price:\t\t\t ${report.endPrice} ${this.currency}`);
