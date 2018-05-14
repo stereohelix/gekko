@@ -94,8 +94,7 @@ if(mode === 'backtest') {
     log.info(`(PROFIT REPORT) start time:\t\t\t ${report.startTime}`);
     log.info(`(PROFIT REPORT) end time:\t\t\t ${report.endTime}`);
     log.info(`(PROFIT REPORT) timespan:\t\t\t ${report.timespan}`);
-    log.info(`(PROFIT REPORT) exposure:\t\t\t ${report.exposure}%`);
-    log.info(`(PROFIT REPORT) efficiency:\t\t\t ${report.efficiency}%`);
+    log.info(`(PROFIT REPORT) exposure:\t\t\t ${report.exposure}`);
     log.info();
     log.info(`(PROFIT REPORT) start price:\t\t\t ${report.startPrice} ${this.currency}`);
     log.info(`(PROFIT REPORT) end price:\t\t\t ${report.endPrice} ${this.currency}`);
