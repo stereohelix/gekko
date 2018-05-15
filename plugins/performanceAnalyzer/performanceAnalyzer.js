@@ -169,7 +169,7 @@ PerformanceAnalyzer.prototype.calculateReportStatistics = function() {
     / Math.sqrt(this.trades / (this.trades - 2));
   
   const downside = statslite.percentile(this.losses.map(r => r.profit), 0.25)
-    / Math.sqrt(this.trades / (this.trades - 2));
+    * Math.sqrt(this.trades / (this.trades - 2));
 
   const report = {
     startTime: this.dates.start.utc().format('YYYY-MM-DD HH:mm:ss'),
